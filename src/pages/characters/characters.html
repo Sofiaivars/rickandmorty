@@ -1,0 +1,30 @@
+<div class="p-2 ml-16 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-2 justify-start items-start">
+<div *ngFor="let character of characters()">
+  <a [routerLink]="['/character', character.id]" class="no-underline">
+<div class="w-xl bg-white/10 backdrop-blur-md border border-green-700 rounded-4xl flex items-center space-x-4 p-4 hover:scale-105 transform transition duration-300 shadow-lg hover:shadow-cyan-400/30">
+        <div>
+            <img [src]="character.image" alt="{{ character.name }}" class="items-end mr-34 w-64 h-44 object-cover rounded-lg" />
+        </div>  
+        <div class="text-white p-2 w-full">
+                    <div class="flex items-center justify-between mb-1">
+
+        <span class="text-xl font-bold">{{ character.name }}</span>
+<span 
+  [ngClass]="{
+    'bg-green-200 text-green-800 shadow-md shadow-green-600': character.status === 'Alive',
+    'bg-red-200 text-red-800': character.status === 'Dead',
+    'bg-gray-200 text-gray-800': character.status === 'unknown'
+  }"
+  class="inline-block rounded-full px-3 py-1 mr-4 font-semibold text-sm "
+>
+  {{ character.status }}
+</span>
+
+</div>
+<p>Species: {{ character.species }}</p>
+  <p>Gender: {{ character.gender }}</p>
+</div>
+</div>
+  </a>
+</div>
+</div>
